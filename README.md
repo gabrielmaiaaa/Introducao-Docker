@@ -1,6 +1,8 @@
 # Introducao-Docker
 Aprendendo a usar o docker
 
+Quando você cria vários containers a partir da mesma imagem, não são geradas múltiplas cópias da imagem. Na realidade, todos os containers compartilham a mesma imagem base, já que ela é imutável (somente leitura). Por exemplo: se você cria um container Ubuntu e adiciona um arquivo .txt dentro dele, esse arquivo só existirá naquele container específico. Se você iniciar um novo container a partir da mesma imagem, o arquivo não estará lá, pois as alterações são isoladas em cada container.
+
 ### Verificar containers e images
 - Verificar os containers ativos:
 ```
