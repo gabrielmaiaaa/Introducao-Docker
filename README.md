@@ -3,6 +3,8 @@ Aprendendo a usar o docker
 
 Quando você cria vários containers a partir da mesma imagem, não são geradas múltiplas cópias da imagem. Na realidade, todos os containers compartilham a mesma imagem base, já que ela é imutável (somente leitura). Por exemplo: se você cria um container Ubuntu e adiciona um arquivo .txt dentro dele, esse arquivo só existirá naquele container específico. Se você iniciar um novo container a partir da mesma imagem, o arquivo não estará lá, pois as alterações são isoladas em cada container.
 
+Existe como rodar comando dentro de comando no docker, basta colocar $() depois de um comando que irá funcionar.
+
 ### Verificar containers e images
 - Verificar os containers ativos:
 ```
@@ -31,17 +33,25 @@ O comando "-it" serve para tornar a execução interativa, it vem de interativo.
 ### Parar a execução de um container
 - Parar uma execução:
 ```
-docker stop "id do container"
+docker stop <id do container>
+```
+as vezes pode demorar para parar, então vc pode usar este comando aqui para colocar até qaundo deve parar:
+```
+docker stop -t <tempo> <id>
+```
+- Parar o container e excluir ele ao mesmo tempo:
+```
+docker rm -f <id>
 ```
 
 ### Voltar um container a ativa
 - Para voltar a rodar um container que foi parado:
 ```
-docker start "id do container"
+docker start <id do container>
 ```
 - Para voltar a interagir com um container após ter fechado:
 ```
-docker exec -iti "id" bash
+docker exec -iti <id> bash
 ```
 outra forma de voltar a interagir
 ```
@@ -58,6 +68,15 @@ Uma coisa legal é q o id não precisa ser completo, vc pode colocar os 4 primei
 ```
 docker rmi <nome>:latest
 ```
+- Para excluir todos os containers:
+```
+docker container prune
+```
+- Para excluir todas as imagens:
+```
+docker rmi $(docker images -q)
+```
+o comando "docker images -q" funciona para mostrar todos os ids que tem baixados de imagens.
 
 ### Personalizar nomes
 - Dar nomes personalizado aos containers:
@@ -75,6 +94,10 @@ docker run -di uvbuntu
 docker exec <id> echo "ola mundo"
 ```
 
-
+### Inspecionar uma imgem ou container:
+- Inspecionar/ver detalhes
+```
+docker inspect <nome image>:latest
+```
 
 
