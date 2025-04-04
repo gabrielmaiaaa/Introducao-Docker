@@ -1,10 +1,11 @@
 # Introducao-Docker
-Aprendendo a usar o docker
+Aprendendo a usar o docker. Todo o conteúdo está sendo visto no canal TechEduca.
 
 Quando você cria vários containers a partir da mesma imagem, não são geradas múltiplas cópias da imagem. Na realidade, todos os containers compartilham a mesma imagem base, já que ela é imutável (somente leitura). Por exemplo: se você cria um container Ubuntu e adiciona um arquivo .txt dentro dele, esse arquivo só existirá naquele container específico. Se você iniciar um novo container a partir da mesma imagem, o arquivo não estará lá, pois as alterações são isoladas em cada container.
 
 Existe como rodar comando dentro de comando no docker, basta colocar $() depois de um comando que irá funcionar.
 
+# Comandos Básicos
 ### Verificar containers e images
 - Verificar os containers ativos:
 ```
@@ -83,6 +84,10 @@ o comando "docker images -q" funciona para mostrar todos os ids que tem baixados
 ```
 docker run --name <nome> -it ubuntu
 ```
+- Renomear um nome:
+```
+docker rename <nome antigo> <novo nome>
+```
 
 ### Habilitar container fora do terminal
 - Deixar container executando fora daquele terminal (ficando ativo "para sempre").
@@ -100,4 +105,55 @@ docker exec <id> echo "ola mundo"
 docker inspect <nome image>:latest
 ```
 
+# Estados de Containers
+Quando você dá o "docker run" ele já cria o container, logo n precisa escrever "docker create".
+## Create
+Estado que um container é criado e está esperando para ser executado. 
+```
+docker create -it ubuntu
+```
+O estado Create pode ir para os estados Running e Deleted.
+#### Running
+Estado que está inicializando um conatainer.
+```
+docker start <nome/id>
+```
+#### Deleted
+Estado que deleta um container
+```
+docker rm <nome/id>
+```
 
+## Running
+Estado que está inicializando um conatainer. O estado Running consegue ir para os estados Stopped e Paused
+#### Stoped
+Existem dois comandos que vão até o estado Stoped, sendo o kill e stop.
+Kill faz com oq o processo principal do container seja finalizado imediatametne (sem aquele cowldown de 10 segundos do stop)
+```
+docker kill <nome/id>
+```
+```
+docker stop <nome/id>
+```
+#### Paused
+```
+docker pause <nome/id>
+```
+
+## Paused
+Este estado apenas congelar o container, mantendo todos os processos. O estado de Paused só pode ir para o estado de Running.
+#### Running
+```
+docker unpaused <nome/id>
+```
+
+## Stopped
+O Stopped consegue ir para o estado Deleted e Running
+#### Running
+```
+docker restart <nome/id>
+```
+#### Deleted
+```
+docker rm <nome/id>
+```
