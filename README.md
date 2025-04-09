@@ -131,6 +131,12 @@ Existe a possibilidade de passar variaveis para um container, para isso use "-e"
 docker run -e VARIAVEL='valor' <container>
 ```
 
+### Camadas
+- Para verificar camads de uma imagem:
+```
+docker history <image:latest>
+```
+
 # Estados de Containers
 Quando você dá o "docker run" ele já cria o container, logo n precisa escrever "docker create".
 ## Create
