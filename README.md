@@ -189,3 +189,8 @@ docker restart <nome/id>
 ```
 docker rm <nome/id>
 ```
+
+# Criando as Prorpias Imagens
+- Existem duas formas de fazer isso, com docker commit ou com dockerfile
+- Usando o docker commit é uito custoso e demorado (processo bem chato), por isso a galera prefere criar um dockerfile na pasta de arquivos
+
