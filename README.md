@@ -105,6 +105,32 @@ docker exec <id> echo "ola mundo"
 docker inspect <nome image>:latest
 ```
 
+### Desconhecido
+- Para puxar dockers não oficias, é necessário você colocar o nome do usuario e o docker (tipo como funciona no github)
+```
+docker run dockersamples/static-site
+```
+
+### Portas
+- Para rodar uma pagina estatica no docker, vc precisa colocar uma porta para accessar no localhost. O "-d" server para rodar em background, para o terminal não ficar travado
+```
+docker run -P -d <comando>
+```
+- Para pegar a porta do ID, basta usar
+```
+docker port <id>
+```
+-  Para colocar uma porta manualmente:
+```
+docker run -p <port> (ex: 5000:50)
+```
+
+### Variaveis
+Existe a possibilidade de passar variaveis para um container, para isso use "-e":
+```
+docker run -e VARIAVEL='valor' <container>
+```
+
 # Estados de Containers
 Quando você dá o "docker run" ele já cria o container, logo n precisa escrever "docker create".
 ## Create
