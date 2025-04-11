@@ -7,9 +7,9 @@ RUN pip3 install --no-cache-dir -r requirements.txt
 EXPOSE 8080
 ENV LOGOMARCA=""
 ENV FOTO=""
-ENV NOME="Gabriel Maia"
-ENV IDADE="20"
+ENV NOME="nome"
+ENV IDADE="idade"
 ENV EMAIL="email"
-ENV PROFISSAO="Dev"
-ENV SITE="github.com/gabrielmaiaaa"
+ENV PROFISSAO="prof"
+ENV SITE="site"
 CMD [ "python3", "app.py" ]
