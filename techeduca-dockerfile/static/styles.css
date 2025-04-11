@@ -1,0 +1,41 @@
+body {
+  background-color: blue;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.card {
+  background-color: white;
+  padding: 20px;
+  text-align: left;
+  font-family: 'Quicksand', sans-serif;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, .4);
+  border-radius: 4px 4px;
+}
+
+.card img {
+  display: block;
+  margin: 0 auto;
+}
+
+.campos {
+  font-size: 14pt;
+  text-align: center;
+}
+
+#perfil {
+  width: 128px;
+  border-radius: 64px 64px;
+}
+
+#logo {
+  height: 32px;
+  margin-bottom: 20px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap')

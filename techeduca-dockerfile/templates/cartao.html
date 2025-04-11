@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cartão Empresarial</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+	  <img id="logo" src="{{ logo }}" alt="Logo Empresa">
+      <img id="perfil" src="{{ foto }}" alt="Foto do Empresário">
+	  <p class="campos">{{ nome }}</p>
+	  <p><strong>Idade:</strong> {{ idade }}</p>
+	  <p><strong>Email:</strong> {{ email }}</p>
+	  <p><strong>Profissão:</strong> {{ profissao }}</p>
+	  <p><strong>Site:</strong> {{ site }}</p>
+    </div>
+  </div>
+</body>
+</html>
