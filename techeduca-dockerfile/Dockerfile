@@ -9,7 +9,7 @@ ENV LOGOMARCA=""
 ENV FOTO=""
 ENV NOME="Gabriel Maia"
 ENV IDADE="20"
-ENV EMAIL="gabrielmaia6743@gmail.com"
+ENV EMAIL="gabrielmaia6473@gmail.com"
 ENV PROFISSAO="Dev"
 ENV SITE="github.com/gabrielmaiaaa"
 CMD [ "python3", "app.py" ]
