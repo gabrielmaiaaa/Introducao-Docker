@@ -197,6 +197,49 @@ docker rm <id>
 
 ---
 
+## 🎲 Formas de Persistência de Dados
+Existe a possibilidade de você conseguir persisitir dados de um container para outro. Para isso vai ser guardados os dados na memoria local, no seu hd.
+
+### Por Bind Mounts
+è criado uma pasta na própria máquina e essa pasta pode ser usada pela imagem do container.
+```bash
+docker run -it -v /<nomePastaMeuPC>:/<nomePastaImage>
+# ou
+docker run -it --mount type=bind,source/<nomePastaMeuPC>,target=/<nomePastaImage> <image>
+```
+
+> `nomePastaMeuPC` é a pasta que você vai deixar no seu PC para comparilhar com o container. `nomePastaImage` é a pasta que vai ser criada na imagem com base na pasta do seu PC.
+
+### Por Volume
+O próprio docker faz a gerencia. Melhor que o Bind Mounts
+
+```bash
+docker volume create <nome>                                     # Cria um volume
+docker run -it --mount source=<nome>,targe=/<nome> ubuntu       
+# ou
+docker run -it -v <nomeVolumeMeuPC>:/<nomePastaImage> <imagem>  # Menos verboso, mas pode ser usados sim
+```
+> `target` é o diretorio do seu container
+> no `source` você pode colocar o nome de um volume que não foi criado ainda, o próprio docker vai criar para você.
+
+Os volumes ficam guardados na pasta `/var/lib/docker/volume` da sua máquina.
+
+E dentro dos arquivos das pastas no `volume` teremos os dados persistidos.
+
+#### Excluir volume
+Para excluir uma volume é simples
+```bash
+docker volume rm <nome>
+```
+
+### Por TMPFS
+Aqui os dados serão persistidos na memoria ram, ao inves de ser no HDD ou SSD. Os dados vão ser perdidos, visto que estão sendo guardados numa memoria volátil (arquivos temporários).
+```bash
+docker run -it --tmpfs=/<nomePastaImage> <image>
+# ou
+docker run -it --mount type=tmpfs,destination=/<nomePastaImage> <image>
+```
+
 ## 🛠️ Criando Imagens
 
 Duas formas principais:
