@@ -130,6 +130,22 @@ docker history <imagem>:latest   # Mostra camadas da imagem
 
 ---
 
+### 💻 Build da Image
+
+```bash
+docker build -t <username>/<nome>:<tag> .
+```
+
+---
+
+### 🚀 Lançando pro Docker Hub
+
+```bash
+docker push <username>/<nome>:<tag>
+```
+
+---
+
 ## 🔄 Estados do Container
 
 ### Create
