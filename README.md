@@ -327,7 +327,11 @@ ping ubuntu2
 Nesse exemplo de cima, os dois containers do ubuntu vão conseguir pingar um no outro.
 
 ### Host
+Ele tira a necessidade de precissar mapear as portas que aquele container vai utilizar. Ele vai estar inserido na própria rede, logo acessando o localhost sem porta, ele consegue acessar
 
+### None
+Não usa nenhuma interface de rede, algumas aplicações que ele pode ser usado:
+- processamento de dados locais
+- Executar algo localmente sem rede
 
-### Nome
-
+Caso vc rode um container como none, ele não vai ter nenhum IP vinculado
