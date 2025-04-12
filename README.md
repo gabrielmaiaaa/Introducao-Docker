@@ -291,47 +291,57 @@ docker build -t minha-imagem .
 
 ---
 
-## Tipos de Redes
-Existem 3 tipos de redes: Bridge, Host e None. O Docker já faz por padrão o gerenciamento dos IPs dos containers
+## 🌐 Tipos de Redes
 
-### Brigde
-Por padrão o Docker coloca os containers como bridge, permitindo a comunicação entre containers.
+O Docker possui três tipos principais de redes: `bridge`, `host` e `none`. Por padrão, o Docker já gerencia os IPs dos containers automaticamente.
 
-Existe uma forma de criar uma conexão entre containers sem precisar ficar passando o IP
+### 🔗 Bridge
+É a rede padrão dos containers. Permite que containers se comuniquem entre si.
+
+#### Criar uma rede bridge personalizada
 ```bash
 docker network create --driver bridge <nomeRede>
-# para verificar
-docker network ls
+docker network ls  # Lista redes existentes
 ```
 
-#### Conectar na minha rede criada
-Primeiro para conectar em nossa rede iremos desconectar ela do padrão bridge
+#### Conectar container à nova rede
+Desconectando da rede bridge padrão:
 ```bash
-docker network desconnect bridge <nomeImage>
+docker network disconnect bridge <nomeContainer>
 ```
-Agora conectando
+Conectando à nova rede:
 ```bash
-docket network connect <nomeRede> <nomeImage>
-# para verificar
-docker inspect <nomeContainer>
+docker network connect <nomeRede> <nomeContainer>
+docker inspect <nomeContainer>  # Verificar conexões de rede
 ```
-Para abrir uma imagem direto na rede
+Rodar container já conectado à rede:
 ```bash
-docker run -it --network <nomerede> --name <nome> <nomeImage>
+docker run -it --network <nomeRede> --name <nome> <imagem>
 ```
-Agora os dois containers consegue se comunicar entre si
+Teste de comunicação entre containers:
 ```bash
 ping ubuntu1
 ping ubuntu2
 ```
-Nesse exemplo de cima, os dois containers do ubuntu vão conseguir pingar um no outro.
+> Se ambos os containers estiverem na mesma rede bridge, conseguem se comunicar por nome.
 
-### Host
-Ele tira a necessidade de precissar mapear as portas que aquele container vai utilizar. Ele vai estar inserido na própria rede, logo acessando o localhost sem porta, ele consegue acessar
+### 🖥️ Host
+O container compartilha a mesma rede do host. Isso elimina a necessidade de mapear portas manualmente. Exemplo de uso:
+```bash
+docker run --network host <imagem>
+```
+Você pode acessar a aplicação no `localhost` diretamente.
 
-### None
-Não usa nenhuma interface de rede, algumas aplicações que ele pode ser usado:
-- processamento de dados locais
-- Executar algo localmente sem rede
+### 🚫 None
+O container não possui nenhuma interface de rede. Útil para:
+- Processamento de dados locais
+- Executar tarefas que não precisam de rede
 
-Caso vc rode um container como none, ele não vai ter nenhum IP vinculado
+Exemplo:
+```bash
+docker run --network none <imagem>
+```
+> O container não terá nenhum IP associado.
+
+---
+
