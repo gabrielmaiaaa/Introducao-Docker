@@ -290,3 +290,44 @@ docker build -t minha-imagem .
 ```
 
 ---
+
+## Tipos de Redes
+Existem 3 tipos de redes: Bridge, Host e None. O Docker já faz por padrão o gerenciamento dos IPs dos containers
+
+### Brigde
+Por padrão o Docker coloca os containers como bridge, permitindo a comunicação entre containers.
+
+Existe uma forma de criar uma conexão entre containers sem precisar ficar passando o IP
+```bash
+docker network create --driver bridge <nomeRede>
+# para verificar
+docker network ls
+```
+
+#### Conectar na minha rede criada
+Primeiro para conectar em nossa rede iremos desconectar ela do padrão bridge
+```bash
+docker network desconnect bridge <nomeImage>
+```
+Agora conectando
+```bash
+docket network connect <nomeRede> <nomeImage>
+# para verificar
+docker inspect <nomeContainer>
+```
+Para abrir uma imagem direto na rede
+```bash
+docker run -it --network <nomerede> --name <nome> <nomeImage>
+```
+Agora os dois containers consegue se comunicar entre si
+```bash
+ping ubuntu1
+ping ubuntu2
+```
+Nesse exemplo de cima, os dois containers do ubuntu vão conseguir pingar um no outro.
+
+### Host
+
+
+### Nome
+
