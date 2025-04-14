@@ -1,6 +1,6 @@
 # Projeto: Castrastro de Usuários (user-registration) - NodeJS/Express
 ### 1 - O que é?
-Página web para cadastro de usuários desenvolvido em NodeJS/Express com intuito educacional.
+Página web para cadastro de usuários desenvolvido em NodeJS/Express com intuito educacional. Pelo TechEduca
 
 ### 2 - Objetivo
 O principal objetivo desse projeto é sua utilização em containers.
