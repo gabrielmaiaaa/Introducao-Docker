@@ -347,7 +347,7 @@ docker run --network none <imagem>
 
 # 🧩 Docker Compose
 
-O Docker Compose é uma alternativa prática para que você **não precise ficar criando vários Dockerfiles** ou repetindo comandos manualmente. Com ele, você define toda a estrutura de containers, redes, volumes e variáveis de ambiente num único arquivo (`docker-compose.yml`).
+O Docker Compose é uma alternativa prática para que você **não precise ficar lidando com vários Dockerfiles um por um** ou repetindo comandos manualmente. Com ele, você define toda a estrutura de containers, redes, volumes e variáveis de ambiente num único arquivo (`docker-compose.yml`).
 
 ## 📦 Estrutura Base
 ```yaml
