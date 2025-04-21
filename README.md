@@ -345,3 +345,62 @@ docker run --network none <imagem>
 
 ---
 
+# 🧩 Docker Compose
+
+O Docker Compose é uma alternativa prática para que você **não precise ficar criando vários Dockerfiles** ou repetindo comandos manualmente. Com ele, você define toda a estrutura de containers, redes, volumes e variáveis de ambiente num único arquivo (`docker-compose.yml`).
+
+## 📦 Estrutura Base
+```yaml
+version: '3'  # versão do Compose que será utilizada
+
+services:     # serviços que queremos executar
+  meu-blog:   # nome do serviço (pode ser qualquer um)
+    image: wordpress:6.2.2         # imagem e versão
+    container_name: wordpress      # nome customizado do container
+    restart: always                # reiniciar automaticamente se falhar
+    env_file:                      # arquivo de variáveis de ambiente
+      - .env
+    ports:                         # mapeamento de portas
+      - 80:80
+    volumes:                       # volumes compartilhados
+      - wordpress:/var/www/html
+    networks:                      # rede a ser utilizada
+      - meu-blog
+    depends_on:                    # dependência de outro serviço
+      - db
+
+  db:
+    image: mysql:5.7
+    container_name: mysql
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - 8000:8000
+    volumes:
+      - db:/var/lib/mysql
+    networks:
+      - meu-blog
+
+# Criamos a rede e os volumes usados pelos serviços
+networks:
+  meu-blog:      # nome da rede
+    driver: bridge
+
+volumes:         # volumes que serão criados se não existirem
+  wordpress:
+  db:
+```
+
+## ▶️ Rodando o Docker Compose
+Para rodar, basta estar na pasta onde está o `docker-compose.yml` e executar:
+```bash
+docker compose up
+```
+
+Se quiser rodar em segundo plano (background), adicione `-d`:
+```bash
+docker compose up -d
+```
+
+
