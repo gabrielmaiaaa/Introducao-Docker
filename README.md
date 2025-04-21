@@ -403,4 +403,13 @@ Se quiser rodar em segundo plano (background), adicione `-d`:
 docker compose up -d
 ```
 
+## 🛑 Parando o Docker Compose
+Para parar, bastar executar o seguinte comando:
+```bash
+docker compose stop
+```
 
+Para parar e remover, basta executar o seguinte comando:
+```bash
+docker compose down
+```
